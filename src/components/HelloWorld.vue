@@ -1,96 +1,102 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+  <van-cell-group inset>
+    <van-cell>
+      <van-field v-model="userName" label="收货人" placeholder="注:收货人需与收件人一致" />
+    </van-cell>
+    <van-cell>
+      <van-field v-model="userPhone" label="手机号" />
+    </van-cell>
+
+      <van-cell is-link title="取件地址" @click="servePopup" :value="serveValue" ></van-cell>
+        <van-popup v-model="serveFlag"  position="bottom" :style="{ height: '270px' }">
+          <van-picker
+            show-toolbar
+            title="Title"
+            :columns="columns"
+            @confirm="serveConfirm"
+            @cancel="onCancel"
+          />
+        </van-popup>
+
+      <van-cell is-link title="收货地址" @click="dormitoryPopup" :value="dormitoryValue"></van-cell>
+        <van-popup v-model="dormitoryFlag"  position="bottom" :style="{ height: '270px' }">
+          <van-picker
+            show-toolbar
+            title="Title"
+            :columns="dormitory"
+            @confirm="dormitoryConfirm"
+            @cancel="onCancel"
+          />
+        </van-popup>
+  </van-cell-group>
 </template>
 
 <script>
+import { Toast } from 'vant';
 export default {
-  name: 'HelloWorld',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+      userName: '',
+      userPhone: '',
+      serveFlag: false,
+      dormitoryFlag: false,
+      serveValue: '请选择',
+      dormitoryValue: '请选择',
+      columns: [
+        {
+          text: '东苑',
+          children: [{text:'圆通'},{text:'顺丰'},{text:'中通'},{text:'京东'},{text:'韵达'}],
+        },
+        {
+          text: '中苑',
+          children: [{text:'圆通'},{text:'顺丰'},{text:'中通'},{text:'京东'},{text:'韵达'}],
+        },
+                {
+          text: '西苑',
+          children: [{text:'顺丰'},{text:'中通'},{text:'京东'},{text:'韵达'}],
+        },
+      ],
+
+      dormitory: [
+        {
+          text: '晖园',
+          children: [{text:'14栋'},{text:'15栋'},{text:'16栋'},{text:'17栋'},{text:'12栋'}],
+        },
+        {
+          text: '文园',
+          children: [{text:'14栋'},{text:'15栋'},{text:'16栋'},{text:'17栋'},{text:'12栋'}],
+        },
+        {
+          text: '硕园',
+          children: [{text:'14栋'},{text:'15栋'},{text:'16栋'},{text:'17栋'},{text:'12栋'}],
+        },
+        {
+          text: '沁园',
+          children: [{text:'14栋'},{text:'15栋'},{text:'16栋'},{text:'17栋'},{text:'12栋'}],
+        },
+      ],
+    };
+  },
+
+  methods: {
+    servePopup() {
+      this.serveFlag = true;
+    },
+    dormitoryPopup() {
+      this.dormitoryFlag = true;
+    },
+    serveConfirm(value, index) {
+      this.serveValue = (value).join(",");
+      this.serveFlag = !this.serveFlag;
+    },
+    dormitoryConfirm(value, index) {
+      this.dormitoryValue = (value).join(",");
+      this.dormitoryFlag = !this.dormitoryFlag;
+    },
+    onCancel() {
+      Toast('Cancel');
+    },
+  },
 }
 </script>
 

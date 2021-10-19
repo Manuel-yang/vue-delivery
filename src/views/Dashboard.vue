@@ -17,13 +17,13 @@
   </div>
 </template>
 <script>
-import MessageBox from './MessageBox.vue'
-import BoxBlock from './BoxBlock.vue'
-import Sidebar from './Sidebar.vue'
-import SectionLine from './SectionLine.vue'
-import SectionHeader from './SectionHeader.vue'
-import UserBlock from './UserBlock.vue'
-import SearchBlock from './SearchBlock.vue'
+import MessageBox from '../components/MessageBox.vue'
+import BoxBlock from '../components/BoxBlock.vue'
+import Sidebar from '../components/Sidebar.vue'
+import SectionLine from '../components/SectionLine.vue'
+import SectionHeader from '../components/SectionHeader.vue'
+import UserBlock from '../components/UserBlock.vue'
+import SearchBlock from '../components/SearchBlock.vue'
 export default {
   components: {
     MessageBox,
