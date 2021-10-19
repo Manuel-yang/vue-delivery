@@ -7,7 +7,7 @@
       <line x1="9" y1="9" x2="15" y2="15" /></svg>
   </button>
   <div class="projects-section-header">
-    <p>Client Messages</p>
+    <p>留言板</p>
   </div>
   <div class="messages">
     <div class="message-box">
