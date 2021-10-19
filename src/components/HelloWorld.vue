@@ -1,33 +1,34 @@
 <template>
   <van-cell-group inset>
-    <van-cell>
-      <van-field v-model="userName" label="收货人" placeholder="注:收货人需与收件人一致" />
-    </van-cell>
-    <van-cell>
+      <van-field v-model="userName" label="收货人" placeholder="注:收货人需与收件人一致" /> 
       <van-field v-model="userPhone" label="手机号" />
-    </van-cell>
 
       <van-cell is-link title="取件地址" @click="servePopup" :value="serveValue" ></van-cell>
-        <van-popup v-model="serveFlag"  position="bottom" :style="{ height: '270px' }">
-          <van-picker
-            show-toolbar
-            title="Title"
-            :columns="columns"
-            @confirm="serveConfirm"
-            @cancel="onCancel"
-          />
-        </van-popup>
+      <van-popup v-model="serveFlag"  position="bottom" :style="{ height: '270px' }">
+        <van-picker
+          show-toolbar
+          title="取件地址"
+          :columns="columns"
+          @confirm="serveConfirm"
+          @cancel="onCancel"
+        />
+      </van-popup>
 
       <van-cell is-link title="收货地址" @click="dormitoryPopup" :value="dormitoryValue"></van-cell>
         <van-popup v-model="dormitoryFlag"  position="bottom" :style="{ height: '270px' }">
           <van-picker
             show-toolbar
-            title="Title"
+            title="收货地址"
             :columns="dormitory"
             @confirm="dormitoryConfirm"
             @cancel="onCancel"
           />
         </van-popup>
+
+      
+      <van-cell>
+        <van-uploader v-model="fileList" :after-read="afterRead" multiple />
+      </van-cell>
   </van-cell-group>
 </template>
 
@@ -75,6 +76,9 @@ export default {
           children: [{text:'14栋'},{text:'15栋'},{text:'16栋'},{text:'17栋'},{text:'12栋'}],
         },
       ],
+
+      fileList: [
+      ],
     };
   },
 
@@ -95,6 +99,9 @@ export default {
     },
     onCancel() {
       Toast('Cancel');
+    },
+    afterRead(file) {
+      console.log("upload success");
     },
   },
 }

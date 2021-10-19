@@ -1,5 +1,5 @@
 <template>
-  <div class="project-boxes jsGridView">
+  <div class="project-boxes jsListView">
     <ProjectBox />
     <ProjectBox />
     <ProjectBox />
