@@ -2,16 +2,20 @@
   <div class="projects-section-line">
     <div class="projects-status">
       <div class="item-status">
-        <span class="status-number">45</span>
-        <span class="status-type">In Progress</span>
+        <span class="status-number">4</span>
+        <span class="status-type">待派送</span>
       </div>
       <div class="item-status">
-        <span class="status-number">24</span>
-        <span class="status-type">Upcoming</span>
+        <span class="status-number">2</span>
+        <span class="status-type">派送中</span>
       </div>
       <div class="item-status">
-        <span class="status-number">62</span>
-        <span class="status-type">Total Projects</span>
+        <span class="status-number">6</span>
+        <span class="status-type">已完成</span>
+      </div>
+      <div class="item-status">
+        <span class="status-number">12</span>
+        <span class="status-type">全部订单</span>
       </div>
     </div>
     <div class="view-actions">
