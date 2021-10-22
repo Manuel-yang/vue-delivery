@@ -26,7 +26,12 @@
           />
         </van-popup>
 
-      
+        
+      <van-cell is-link title="收货时间" @click="datePopup" :value="dateValue"></van-cell>
+        <van-popup v-model="dateFlag"  position="bottom" :style="{ height: '270px' }">
+          <van-datetime-picker v-model="currentTime" type="time" :filter="filter" @confirm="dateConfirm"/>
+        </van-popup>
+
       <van-cell>
         <van-uploader v-model="fileList" :after-read="afterRead" multiple />
       </van-cell>
@@ -49,8 +54,11 @@ export default {
       userPhone: '',
       serveFlag: false,
       dormitoryFlag: false,
+      dateFlag: false,
       serveValue: '请选择',
       dormitoryValue: '请选择',
+      dateValue: '请选择',
+      currentTime: '12:00',
       columns: [
         {
           text: '东苑',
@@ -98,6 +106,9 @@ export default {
     dormitoryPopup() {
       this.dormitoryFlag = true;
     },
+    datePopup() {
+      this.dateFlag = true;
+    },
     serveConfirm(value, index) {
       this.serveValue = (value).join(",");
       this.serveFlag = !this.serveFlag;
@@ -105,6 +116,10 @@ export default {
     dormitoryConfirm(value, index) {
       this.dormitoryValue = (value).join(",");
       this.dormitoryFlag = !this.dormitoryFlag;
+    },
+    dateConfirm(value, index) {
+      this.currentTime = value
+      this.dateFlag = !this.dateFlag;
     },
     onCancel() {
       Toast('Cancel');
@@ -117,8 +132,15 @@ export default {
       this.data.phoneNum = this.userPhone;
       this.data.serveValue = this.serveValue;
       this.data.dormitoryValue = this.dormitoryValue;
+      this.data.deliverTime = this.currentTime;
       this.$emit('submit',this.data)
-    }
+    },
+    filter(type, options) {
+      if (type === 'minute') {
+        return options.filter((option) => option % 5 === 0);
+      }
+      return options;
+    },
   },
 }
 </script>

@@ -2,15 +2,15 @@
   <div class="projects-section-line">
     <div class="projects-status">
       <div class="item-status">
-        <span class="status-number">4</span>
-        <van-button @click="statusData" plain type="primary">待派送</van-button>
+        <span class="status-number">{{data.preparedValue}}</span>
+        <van-button plain type="primary">待派送</van-button>
       </div>
       <div class="item-status">
-        <span class="status-number">2</span>
+        <span class="status-number">{{data.deliveringValue}}</span>
         <van-button plain type="primary">派送中</van-button>
       </div>
       <div class="item-status">
-        <span class="status-number">6</span>
+        <span class="status-number">{{data.accomplishValue}}</span>
         <van-button plain type="primary">已完成</van-button>
       </div>
       <div class="item-status">

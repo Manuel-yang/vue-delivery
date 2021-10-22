@@ -32,7 +32,9 @@ export default {
   data() {
     return {
       data:[],
-      statusValue:[]
+      preparedValue:0,
+      deliveringValue:0,
+      accomplishValue:0,
     }
   },
   components: {
@@ -51,8 +53,8 @@ export default {
   methods: {
     fetchData() {
       requests.get('/order/findByUserId').then( res => {
-        console.log(res.data.data)
         this.data =res.data.data;
+        console.log(this.data)
         this.statusData();
       })
     },
@@ -60,11 +62,13 @@ export default {
     statusData() {
       for(let i = 0; i < this.data.length; i++)
       {
-        if (this.data[i].status == "prepared") this.statusValue.prepared++;
-        if (this.data[i].status == "delivering") this.statusValue.delivering++;
-        if (this.data[i].status == "accomplish") this.statusValue.accomplish++;
+        if (this.data[i].status == "prepared") this.preparedValue++;
+        if (this.data[i].status == "delivering") this.deliveringValue++;
+        if (this.data[i].status == "accomplish") this.accomplishValue++;
       }
-      console.log(this.statusValue)
+      this.data.preparedValue = this.preparedValue;
+      this.data.deliveringValue = this.deliveringValue;
+      this.data.accomplishValue = this.accomplishValue;
     }
   },
 }

@@ -7,10 +7,6 @@
   </div>
 </template>
 
-<style scoped>
-@import '../assets/css/style.css'
-</style>
-
 <script>
 import ProjectBox from './ProjectBox.vue'
 export default {
@@ -22,3 +18,8 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+@import '../assets/css/style.css'
+</style>
