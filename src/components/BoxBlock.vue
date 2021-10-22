@@ -1,11 +1,9 @@
 <template>
   <div class="project-boxes jsListView">
-    <ProjectBox />
-    <ProjectBox />
-    <ProjectBox />
-    <ProjectBox />
-    <ProjectBox />
-    <ProjectBox />
+    <div v-for="item in data" :key="item.id">
+      <ProjectBox :data="item"/>
+    </div>
+    
   </div>
 </template>
 
@@ -19,5 +17,8 @@ export default {
   components: {
     ProjectBox,
   },
+  props: {
+    data: Array,
+  }
 }
 </script>

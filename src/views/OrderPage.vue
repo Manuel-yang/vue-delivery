@@ -1,12 +1,21 @@
 <template>
-  <Helloworld />
+  <div>
+    <OrderPage @submit="submit"/>
+  </div>
+  
+  
 </template>
 
 <script>
-import Helloworld from '../components/HelloWorld.vue'
+import OrderPage from '../components/OrderPage.vue'
 export default {
   components: {
-    Helloworld,
-  }
+    OrderPage,
+  },
+  methods: {
+    submit(data) {
+      console.log(data)
+    }
+  },
 }
 </script>

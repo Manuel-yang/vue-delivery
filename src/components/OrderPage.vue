@@ -1,4 +1,5 @@
 <template>
+<div>
   <van-cell-group inset>
       <van-field v-model="userName" label="收货人" placeholder="注:收货人需与收件人一致" /> 
       <van-field v-model="userPhone" label="手机号" />
@@ -30,6 +31,13 @@
         <van-uploader v-model="fileList" :after-read="afterRead" multiple />
       </van-cell>
   </van-cell-group>
+  <van-empty >
+    <router-link to="/">
+      <van-button round type="primary" class="bottom-button">返回</van-button>
+    </router-link>
+    <van-button round type="primary" class="bottom-button" @click="submit">确认</van-button>
+  </van-empty>
+</div>
 </template>
 
 <script>
@@ -79,6 +87,7 @@ export default {
 
       fileList: [
       ],
+      data: []
     };
   },
 
@@ -103,6 +112,13 @@ export default {
     afterRead(file) {
       console.log("upload success");
     },
+    submit() {
+      this.data.name = this.userName;
+      this.data.phoneNum = this.userPhone;
+      this.data.serveValue = this.serveValue;
+      this.data.dormitoryValue = this.dormitoryValue;
+      this.$emit('submit',this.data)
+    }
   },
 }
 </script>
@@ -123,4 +139,9 @@ li {
 a {
   color: #42b983;
 }
+
+.bottom-button {
+    width: 160px;
+    height: 40px;
+  }
 </style>

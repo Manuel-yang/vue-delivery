@@ -2,19 +2,16 @@
 <div class="project-box-wrapper">
   <div class="project-box" style="background-color: #d5deff;">
     <div class="project-box-header">
-      <span>December 10, 2020</span>
+      <span>{{data.date}}</span>
       <div class="more-wrapper">
         <button class="project-btn-more">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-            <circle cx="12" cy="12" r="1" />
-            <circle cx="12" cy="5" r="1" />
-            <circle cx="12" cy="19" r="1" /></svg>
+         
         </button>
       </div>
     </div>
     <div class="project-box-content-header">
-      <p class="box-content-header">Web Designing</p>
-      <p class="box-content-subheader">Prototyping</p>
+      <p class="box-content-header">物件:{{data.packageName}}</p>
+      <p class="box-content-subheader">快递员:{{data.deliverName}}</p>
     </div>
     <div class="box-progress-wrapper">
       <p class="box-progress-header">Progress</p>
@@ -44,3 +41,11 @@
 <style scoped>
 @import '../assets/css/style.css'
 </style>
+
+<script>
+export default {
+  props: {
+    data: Object,
+  }
+}
+</script>
