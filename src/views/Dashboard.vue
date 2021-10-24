@@ -2,7 +2,7 @@
   <div class="app-container">
       <div class="app-header">
         <SearchBlock />
-        <UserBlock />
+        <UserBlock :userInfo="userInfo"/>
       </div>
 
       <div class="app-content">
@@ -35,6 +35,7 @@ export default {
       preparedValue:0,
       deliveringValue:0,
       accomplishValue:0,
+      userInfo: [],
     }
   },
   components: {
@@ -48,13 +49,14 @@ export default {
   },
   mounted() {
     this.fetchData()
+    this.getSession()
   },
 
   methods: {
     fetchData() {
       requests.get('/order/findByUserId').then( res => {
         this.data =res.data.data;
-        console.log(this.data)
+        // console.log(this.data)
         this.statusData();
       })
     },
@@ -69,6 +71,18 @@ export default {
       this.data.preparedValue = this.preparedValue;
       this.data.deliveringValue = this.deliveringValue;
       this.data.accomplishValue = this.accomplishValue;
+    },
+
+    getSession() {
+      if(!this.$session.exists()) {
+        return;
+      }
+      else {
+        console.log(this.$session.getAll())
+        console.log(this.userInfo)
+        this.userInfo.userName = this.$session.get("userName")
+      }
+
     }
   },
 }

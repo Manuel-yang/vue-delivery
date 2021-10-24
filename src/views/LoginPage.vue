@@ -42,8 +42,16 @@ export default {
       this.userInfo.userName = this.userName;
       this.userInfo.userPwd = this.userPwd;
       let data = this.userInfo
-      await requests.post('/user/login', {data}).then(res => {
-        console.log(res)
+      await requests.post('/user/login', {data}).then((res) => {
+        if (res.status === 200) {
+          this.$session.set("userName", this.userName);
+          console.log(this.$session.get("userName"))
+          this.$router.push(this.$route.query.redirect || '/')
+        }
+      }, (error) => {
+        if (error.response.status === 400) {
+          alert("您输入的账户密码有误")
+        }
       })
     }
   },
