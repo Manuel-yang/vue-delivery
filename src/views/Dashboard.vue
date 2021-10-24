@@ -1,18 +1,15 @@
 <template>
   <div class="app-container">
       <div class="app-header">
-        <SearchBlock />
-        <UserBlock :userInfo="userInfo"/>
+        <UserBlock/>
       </div>
 
       <div class="app-content">
-        <Sidebar />
         <div class="projects-section">
           <SectionHeader />
           <SectionLine :data="data" />
           <BoxBlock :data="data"/>
         </div>
-        <MessageBox />
       </div>
   </div>
 </template>
@@ -35,7 +32,6 @@ export default {
       preparedValue:0,
       deliveringValue:0,
       accomplishValue:0,
-      userInfo: [],
     }
   },
   components: {
@@ -80,7 +76,6 @@ export default {
       else {
         console.log(this.$session.getAll())
         console.log(this.userInfo)
-        this.userInfo.userName = this.$session.get("userName")
       }
 
     }

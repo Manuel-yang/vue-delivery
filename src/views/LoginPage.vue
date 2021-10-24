@@ -46,7 +46,7 @@ export default {
         if (res.status === 200) {
           this.$session.set("userName", this.userName);
           console.log(this.$session.get("userName"))
-          this.$router.push(this.$route.query.redirect || '/')
+          this.$router.push('/OrderPage')
         }
       }, (error) => {
         if (error.response.status === 400) {

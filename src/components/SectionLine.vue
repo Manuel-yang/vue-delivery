@@ -3,26 +3,30 @@
     <div class="projects-status">
       <div class="item-status">
         <span class="status-number">{{data.preparedValue}}</span>
-        <van-button plain type="primary">待派送</van-button>
+        <van-button size="small" plain type="primary">待派送</van-button>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.deliveringValue}}</span>
-        <van-button plain type="primary">派送中</van-button>
+        <van-button size="small" plain type="primary">派送中</van-button>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.accomplishValue}}</span>
-        <van-button plain type="primary">已完成</van-button>
+        <van-button size="small" plain type="primary">已完成</van-button>
       </div>
       <div class="item-status">
-        <span class="status-number">{{data.length}}</span>
-        <van-button plain type="primary">全部订单</van-button>
+        <span class="status-number">{{data.preparedValue+data.deliveringValue+data.accomplishValue}}</span>
+        <van-button size="small" plain type="primary">全部订单</van-button>
       </div>
-    </div>
-    <div class="view-actions">
+
       <router-link to="/OrderPage">
-        <b-button variant="primary">一键下单</b-button>
+        <div class="blank"></div>
+        <van-button class="bt-order" round size="small" color="#7232dd" plain>一键下单</van-button>
       </router-link>
     </div>
+
+
+
+
   </div>
 </template>
 <style scoped>

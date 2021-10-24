@@ -736,7 +736,7 @@ button, a {
 }
 @media screen and (max-width: 720px) {
   .app-name, .profile-btn span {
-    display: none;
+
   }
 
   .add-btn, .notification-btn, .mode-switch {
@@ -859,4 +859,12 @@ button, a {
     right: 2px;
     top: 10px;
   }
+}
+
+.blank {
+  height: 32px;
+}
+
+.bt-order {
+  margin-left: 1rem;
 }

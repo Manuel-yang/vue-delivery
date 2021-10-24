@@ -37,8 +37,8 @@
       </van-cell>
   </van-cell-group>
   <van-empty >
-    <router-link to="/">
-      <van-button round type="primary" class="bottom-button">返回</van-button>
+    <router-link to="/Dashboard">
+      <van-button round type="primary" class="bottom-button">我的首页</van-button>
     </router-link>
     <van-button round type="primary" class="bottom-button" @click="submit">确认</van-button>
   </van-empty>

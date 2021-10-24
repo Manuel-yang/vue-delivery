@@ -10,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Dashboard',
-      component: Dashboard
+      name: 'LoginPage',
+      component: LoginPage
     },
     {
       path: '/OrderPage',
@@ -19,9 +19,9 @@ export default new Router({
       component: OrderPage
     },
     {
-      path: '/LoginPage',
-      name: 'LoginPage',
-      component: LoginPage
+      path: '/Dashboard',
+      name: 'Dashboard',
+      component: Dashboard
     }
   ]
 })

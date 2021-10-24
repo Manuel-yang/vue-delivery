@@ -18,7 +18,7 @@
     </button>
     <button class="profile-btn">
       <img v-show="isLogin" src="https://assets.codepen.io/3306515/IMG_2025.jpg" />
-      <span @click="login">{{!this.$session.exists()?"Hi!快加入我们吧!":this.$session.get("userName")}}</span>
+      <span @click="login">{{!this.$session.exists()?"登录!加入我们吧!":this.$session.get("userName")}}</span>
     </button>
     <van-button v-show="isLogin" round type="info" @click="loginOut">退出</van-button>
   </div>
@@ -31,15 +31,12 @@ export default {
       isLogin:this.$session.exists(),
     }
   },
-  props: {
-    userInfo: Array
-  },
   methods: {
     loginOut() {
       this.$session.destroy()
       console.log(this.$session.getAll())
       console.log(this.$session.exists())
-      this.$router.go(0);
+      this.$router.push(this.$route.query.redirect || '/')
     },
     login() {
       if (!this.$session.exists()) {
