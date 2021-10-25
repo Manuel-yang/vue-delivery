@@ -50,7 +50,7 @@ export default {
 
   methods: {
     fetchData() {
-      requests.get('/order/findByUserId').then( res => {
+      requests.get(`/order/findByUserId/?userId=${this.$session.get("userId")}`).then( res => {
         this.data =res.data.data;
         // console.log(this.data)
         this.statusData();
@@ -75,7 +75,6 @@ export default {
       }
       else {
         console.log(this.$session.getAll())
-        console.log(this.userInfo)
       }
 
     }
