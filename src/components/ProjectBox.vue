@@ -1,7 +1,6 @@
 <template>
 <div class="project-box-wrapper">
   <div class="project-box" style="background-color: #d5deff;">
-
     <div class="project-box-header">
       <div class="more-wrapper">
         <button class="project-btn-more">
@@ -9,11 +8,12 @@
       </div>
     </div>
     <div class="project-box-content-header">
-      <p class="box-content-header">快递员:{{data.deliverName}}</p>
-      <p class="box-content-subheader">{{data.date}}</p>
+      <p class="box-content-header">{{data.company}}</p>
+      <p class="box-content-subheader">下单时间:{{data.orderDate}}</p>
+      <p class="box-content-subheader">状态:{{data.status}}</p>
     </div>
     <div class="box-progress-wrapper">
-      <p class="box-progress-header">物件:{{data.packageName}}</p>
+      <p class="box-progress-header">取件码:{{data.expressCode}}</p>
       <div class="box-progress-bar">
         <span class="box-progress" style="width: 40%; background-color: #4067f9"></span>
       </div>
@@ -57,7 +57,8 @@ export default {
         this.crossValue = "open"
       }
       else {
-        console.log(this.data)
+        let orderId = this.data.orderId
+        this.$emit('deleteOrder', orderId);
       }
     }
   },

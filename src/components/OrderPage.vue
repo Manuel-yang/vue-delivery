@@ -2,7 +2,8 @@
 <div>
   <van-cell-group inset>
       <van-field v-model="userName" label="收货人" placeholder="注:收货人需与收件人一致" /> 
-      <van-field v-model="userPhone" label="手机号" />
+      <van-field v-model="userPhone" label="手机号"  placeholder="在此输入"/>
+      <van-field v-model="expressCode" label="取件码" placeholder="在此输入"/>
 
       <van-cell is-link title="取件地址" @click="servePopup" :value="serveValue" ></van-cell>
       <van-popup v-model="serveFlag"  position="bottom" :style="{ height: '270px' }">
@@ -25,16 +26,11 @@
             @cancel="onCancel"
           />
         </van-popup>
-
         
       <van-cell is-link title="收货时间" @click="datePopup" :value="dateValue"></van-cell>
         <van-popup v-model="dateFlag"  position="bottom" :style="{ height: '270px' }">
           <van-datetime-picker v-model="currentTime" type="time" :filter="filter" @confirm="dateConfirm"/>
         </van-popup>
-
-      <van-cell>
-        <van-uploader v-model="fileList" :after-read="afterRead" multiple />
-      </van-cell>
   </van-cell-group>
   <van-empty >
     <router-link to="/Dashboard">
@@ -59,17 +55,22 @@ export default {
       dormitoryValue: '请选择',
       dateValue: '请选择',
       currentTime: '12:00',
+      expressCode: '',
       columns: [
         {
-          text: '东苑',
+          text: '文德楼',
           children: [{text:'圆通'},{text:'顺丰'},{text:'中通'},{text:'京东'},{text:'韵达'}],
         },
         {
-          text: '中苑',
+          text: '百世快递(西苑)',
           children: [{text:'圆通'},{text:'顺丰'},{text:'中通'},{text:'京东'},{text:'韵达'}],
         },
-                {
-          text: '西苑',
+        {
+          text: '滨江楼',
+          children: [{text:'顺丰'},{text:'中通'},{text:'京东'},{text:'韵达'}],
+        },
+        {
+          text: '百世快递(人才公寓)',
           children: [{text:'顺丰'},{text:'中通'},{text:'京东'},{text:'韵达'}],
         },
       ],
@@ -95,7 +96,7 @@ export default {
 
       fileList: [
       ],
-      data: []
+      data: {}
     };
   },
 
@@ -119,6 +120,7 @@ export default {
     },
     dateConfirm(value, index) {
       this.currentTime = value
+      this.dateValue = value
       this.dateFlag = !this.dateFlag;
     },
     onCancel() {
@@ -128,11 +130,14 @@ export default {
       console.log("upload success");
     },
     submit() {
-      this.data.name = this.userName;
-      this.data.phoneNum = this.userPhone;
-      this.data.serveValue = this.serveValue;
-      this.data.dormitoryValue = this.dormitoryValue;
-      this.data.deliverTime = this.currentTime;
+      this.data.studentId = this.$session.get("studentId");
+      this.data.targetName = this.userName;
+      this.data.phone = this.userPhone;
+      this.data.expressCode = this.expressCode;
+      this.data.address = this.dormitoryValue;
+      this.data.company = this.serveValue;
+      this.data.arriveDate = this.currentTime;
+      this.data.orderDate =  new Date().toLocaleString();
       this.$emit('submit',this.data)
     },
     filter(type, options) {

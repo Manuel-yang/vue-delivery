@@ -1,7 +1,7 @@
 <template>
   <div class="project-boxes jsListView">
     <div v-for="item in data" :key="item.id">
-      <ProjectBox :data="item"/>
+      <ProjectBox @deleteOrder="deleteOrder" :data="item"/>
     </div>
     
   </div>
@@ -15,7 +15,12 @@ export default {
   },
   props: {
     data: Array,
-  }
+  },
+  methods: {
+    deleteOrder(orderId) {
+      this.$emit('deleteOrder', orderId)
+    }
+  },
 }
 </script>
 

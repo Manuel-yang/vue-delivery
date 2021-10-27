@@ -8,7 +8,7 @@
         <div class="projects-section">
           <SectionHeader />
           <SectionLine :data="data" />
-          <BoxBlock :data="data"/>
+          <BoxBlock @deleteOrder="DeleteOrder" :data="data"/>
         </div>
       </div>
   </div>
@@ -23,7 +23,7 @@ import UserBlock from '../components/UserBlock.vue'
 import SearchBlock from '../components/SearchBlock.vue'
 import axios from 'axios'
 
-const requests = axios.create({ baseURL: 'http://localhost:3000'})
+const requests = axios.create({ baseURL: 'http://localhost:8081'})
 
 export default {
   data() {
@@ -50,9 +50,9 @@ export default {
 
   methods: {
     fetchData() {
-      requests.get(`/order/findByUserId/?userId=${this.$session.get("userId")}`).then( res => {
-        this.data =res.data.data;
-        // console.log(this.data)
+      requests.get(`api/order/findByUserId/${this.$session.get("studentId")}`).then( res => {
+        this.data =res.data.object;
+        console.log(res.data.object)
         this.statusData();
       })
     },
@@ -60,9 +60,9 @@ export default {
     statusData() {
       for(let i = 0; i < this.data.length; i++)
       {
-        if (this.data[i].status == "prepared") this.preparedValue++;
-        if (this.data[i].status == "delivering") this.deliveringValue++;
-        if (this.data[i].status == "accomplish") this.accomplishValue++;
+        if (this.data[i].status == "已下单") this.preparedValue++;
+        if (this.data[i].status == "派送中") this.deliveringValue++;
+        if (this.data[i].status == "已完成") this.accomplishValue++;
       }
       this.data.preparedValue = this.preparedValue;
       this.data.deliveringValue = this.deliveringValue;
@@ -76,7 +76,13 @@ export default {
       else {
         console.log(this.$session.getAll())
       }
-
+    },
+    DeleteOrder(orderId) {
+      console.log(orderId);
+      requests.delete(`api/order/${orderId}`).then((res) => {
+        this.fetchData();
+        console.log(res)
+      })
     }
   },
 }

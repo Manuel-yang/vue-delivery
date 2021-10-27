@@ -29,7 +29,7 @@
 <script>
 import axios from 'axios'
 import { Toast } from 'vant'
-const requests = axios.create({ baseURL: 'http://localhost:3000'})
+const requests = axios.create({ baseURL: 'http://localhost:8081'})
 export default {
   data() {
     return {
@@ -43,11 +43,10 @@ export default {
       this.userInfo.userName = this.userName;
       this.userInfo.userPwd = this.userPwd;
       let data = this.userInfo
-      await requests.post('/user/login', {data}).then((res) => {
+      await requests.post('api/user/login', {data}).then((res) => {
         if (res.status === 200) {
-          this.$session.set("userId", res.data.userId);
+          this.$session.set("studentId", res.data.object.studentId);
           this.$session.set("userName", this.userName);
-          console.log(this.$session.get("userName"))
           this.$router.push('/OrderPage')
         }
       }, (error) => {
