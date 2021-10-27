@@ -1,15 +1,19 @@
 <template>
   <div class="project-boxes jsListView">
     <div v-for="item in data" :key="item.id">
-      <ProjectBox @deleteOrder="deleteOrder" :data="item"/>
+      <ProjectBox v-show="show" @deleteOrder="deleteOrder" :data="item"/>
     </div>
-    
   </div>
 </template>
 
 <script>
 import ProjectBox from './ProjectBox.vue'
 export default {
+  data() {
+    return {
+      show: true,
+    }
+  },
   components: {
     ProjectBox,
   },
@@ -18,6 +22,7 @@ export default {
   },
   methods: {
     deleteOrder(orderId) {
+      this.show = false;
       this.$emit('deleteOrder', orderId)
     }
   },
