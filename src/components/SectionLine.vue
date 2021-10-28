@@ -3,19 +3,35 @@
     <div class="projects-status">
       <div class="item-status">
         <span class="status-number">{{data.preparedValue}}</span>
-        <van-button size="small" plain type="primary">待派送</van-button>
+        <div ontouchstart="">
+          <div class="button">
+            <a href="#">待派送</a>
+          </div>
+        </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.deliveringValue}}</span>
-        <van-button size="small" plain type="primary">派送中</van-button>
+        <div ontouchstart="">
+          <div class="button">
+            <a href="#">派送中</a>
+          </div>
+        </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.accomplishValue}}</span>
-        <van-button size="small" plain type="primary">已完成</van-button>
+        <div ontouchstart="">
+          <div class="button">
+            <a href="#">已完成</a>
+          </div>
+        </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.preparedValue+data.deliveringValue+data.accomplishValue}}</span>
-        <van-button size="small" plain type="primary">全部订单</van-button>
+        <div ontouchstart="">
+          <div class="button">
+            <a href="#">全部订单</a>
+          </div>
+        </div>
       </div>
 
       <router-link to="/OrderPage">
@@ -43,5 +59,6 @@ export default {
 </script>
 
 <style scoped>
-@import '../assets/css/style.css'
+@import '../assets/css/style.css';
+@import '../assets/css/button.css'
 </style>

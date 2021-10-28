@@ -205,7 +205,6 @@ button, a {
   display: flex;
   align-items: center;
   padding-left: 12px;
-  border-left: 2px solid #ddd;
 }
 .profile-btn img {
   width: 32px;
@@ -312,10 +311,11 @@ button, a {
 }
 
 .status-number {
-  font-size: 24px;
+  font-size: 30px;
   line-height: 32px;
   font-weight: 700;
   color: var(--main-color);
+  color: white;
 }
 
 .status-type {
@@ -713,7 +713,7 @@ button, a {
   }
 
   .item-status {
-    margin-right: 0;
+    margin:2px 2px;
   }
 }
 @media screen and (max-width: 880px) {

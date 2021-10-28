@@ -4,6 +4,7 @@
       <div class="app-header">
         <UserBlock/>
       </div>
+
       <div class="app-content">
         <div class="projects-section">
           <SectionHeader />
@@ -48,6 +49,7 @@ export default {
     UserBlock,
     SearchBlock,
     Bottom,
+    SearchBlock,
   },
   mounted() {
     this.fetchData()
