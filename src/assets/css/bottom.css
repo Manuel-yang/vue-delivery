@@ -4,7 +4,7 @@
   grid-template-areas: "main" "footer";
   overflow-x: hidden;
   background: #334756;
-  min-height: 50vh;
+  min-height: 60vh;
   font-family: "Open Sans", sans-serif;
 }
 .body .footer {
