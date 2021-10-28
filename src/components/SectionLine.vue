@@ -19,8 +19,7 @@
       </div>
 
       <router-link to="/OrderPage">
-        <div class="blank"></div>
-        <van-button class="bt-order" round size="small" color="#7232dd" plain>一键下单</van-button>
+        <Bell />
       </router-link>
     </div>
 
@@ -29,16 +28,20 @@
 
   </div>
 </template>
-<style scoped>
-@import '../assets/css/style.css'
-</style>
-
 <script>
+import Bell from '../components/Bell.vue'
 export default {
   props: {
     data: Array
   },
   methods: {
   },
+  components: {
+    Bell,
+  }
 }
 </script>
+
+<style scoped>
+@import '../assets/css/style.css'
+</style>

@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notification{
+    width: 50px;
+    transform-origin: top center;
+    animation: bellring 2s ease infinite;
+}
+
+.ball{
+    transform-origin: top center;
+    animation: ballring 2s ease infinite;
+    animation-delay: 0.1s;
+}
+
+@keyframes bellring {
+    0% { transform: rotate(0); }
+    10% { transform: rotate(20deg); }
+    20% { transform: rotate(-20deg); }
+    30% { transform: rotate(15deg); }
+    40% { transform: rotate(-15deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(-10deg); }
+    70% { transform: rotate(5deg); }
+    80% { transform: rotate(-5deg); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes ballring {
+    0% { transform: rotate(0); }
+    10% { transform: rotate(-5deg); }
+    20% { transform: rotate(5deg); }
+    30% { transform: rotate(-4deg); }
+    40% { transform: rotate(4deg); }
+    50% { transform: rotate(-2deg); }
+    60% { transform: rotate(2deg); }
+    70% { transform: rotate(-1deg); }
+    80% { transform: rotate(1deg); }
+    100% { transform: rotate(0); }
+ }

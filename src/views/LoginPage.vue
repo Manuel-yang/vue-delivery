@@ -93,5 +93,5 @@ export default {
 </script>
 
 <style scoped>
-@import '../assets/css/bottom.css';
+@import '../assets/css/login.css';
 </style>

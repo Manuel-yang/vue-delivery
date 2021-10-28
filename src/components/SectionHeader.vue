@@ -1,16 +1,20 @@
 <template>
   <div class="projects-section-header">
-    <p>信大快递代拿</p>
-    <p class="time">{{updateTime}}</p>
+    <LogoText />
+    
   </div>
 </template>
 
 <script>
+import LogoText from '../components/LogoText.vue'
 export default {
   data(){
     return{
       updateTime:""
     }
+  },
+  components: {
+    LogoText,
   },
   methods:{
   //获取当前年月日

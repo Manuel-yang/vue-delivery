@@ -4,6 +4,7 @@ import Dashboard from '@/views/Dashboard'
 import OrderPage from '@/views/OrderPage'
 import LoginPage from '@/views/LoginPage'
 
+
 Vue.use(Router)
 
 
@@ -28,6 +29,6 @@ export default new Router({
       path: '/Dashboard',
       name: 'Dashboard',
       component: Dashboard
-    }
+    },
   ]
 })

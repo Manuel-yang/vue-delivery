@@ -1,9 +1,9 @@
 <template>
+<div>
   <div class="app-container">
       <div class="app-header">
         <UserBlock/>
       </div>
-
       <div class="app-content">
         <div class="projects-section">
           <SectionHeader />
@@ -12,6 +12,10 @@
         </div>
       </div>
   </div>
+
+<Bottom />
+</div>
+
 </template>
 <script>
 import MessageBox from '../components/MessageBox.vue'
@@ -21,6 +25,7 @@ import SectionLine from '../components/SectionLine.vue'
 import SectionHeader from '../components/SectionHeader.vue'
 import UserBlock from '../components/UserBlock.vue'
 import SearchBlock from '../components/SearchBlock.vue'
+import Bottom from '../components/Bottom.vue'
 import axios from 'axios'
 
 const requests = axios.create({ baseURL: 'http://localhost:8081'})
@@ -42,6 +47,7 @@ export default {
     SectionHeader,
     UserBlock,
     SearchBlock,
+    Bottom,
   },
   mounted() {
     this.fetchData()
