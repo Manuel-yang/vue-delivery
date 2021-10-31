@@ -138,6 +138,7 @@ export default {
       this.data.company = this.serveValue;
       this.data.arriveDate = this.currentTime;
       this.data.orderDate =  new Date().toLocaleString();
+      this,this.dataCheck(this.data);
       this.$emit('submit',this.data)
     },
     filter(type, options) {
@@ -146,6 +147,12 @@ export default {
       }
       return options;
     },
+
+    dataCheck(json) {
+      for (key in json) {
+        console.log(data[key])
+      }
+    }
   },
 }
 </script>

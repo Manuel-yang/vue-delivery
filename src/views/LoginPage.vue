@@ -62,7 +62,8 @@
 <script>
 import axios from 'axios'
 import { Toast } from 'vant'
-const requests = axios.create({ baseURL: 'http://localhost:8081'})
+// const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
+const requests = axios.create({ baseURL:'http://localhost:8081'})
 export default {
   data() {
     return {

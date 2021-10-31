@@ -29,7 +29,8 @@ import SearchBlock from '../components/SearchBlock.vue'
 import Bottom from '../components/Bottom.vue'
 import axios from 'axios'
 
-const requests = axios.create({ baseURL: 'http://localhost:8081'})
+// const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
+const requests = axios.create({ baseURL:'http://localhost:8081'})
 
 export default {
   data() {
