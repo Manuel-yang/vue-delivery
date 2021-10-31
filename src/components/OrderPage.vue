@@ -1,5 +1,13 @@
 <template>
 <div>
+  <div>
+    <van-nav-bar
+      title="南信大Nuister"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
+  </div>
   <van-cell-group inset>
       <van-field v-model="userName" label="收货人" placeholder="注:收货人需与收件人一致" /> 
       <van-field v-model="userPhone" label="手机号"  placeholder="在此输入"/>
@@ -138,7 +146,10 @@ export default {
       this.data.company = this.serveValue;
       this.data.arriveDate = this.currentTime;
       this.data.orderDate =  new Date().toLocaleString();
-      this,this.dataCheck(this.data);
+      if (this.dataCheck(this.data)) {
+        Toast('请填写完整的数据');
+        return
+      }
       this.$emit('submit',this.data)
     },
     filter(type, options) {
@@ -149,9 +160,17 @@ export default {
     },
 
     dataCheck(json) {
-      for (key in json) {
-        console.log(data[key])
+      for (let key in json) {
+        if(json[key] == '') {
+          return false;
+        }
+        return true;
       }
+    },
+    onClickLeft() {
+      this.$router.push('/Dashboard') 
+      this.$router.push({name:'Dashboard'}) 
+      this.$router.push({path:'/Dashboard'})
     }
   },
 }
@@ -178,4 +197,8 @@ a {
     width: 160px;
     height: 40px;
   }
+
+.body {
+  margin-top: 60px;
+}
 </style>

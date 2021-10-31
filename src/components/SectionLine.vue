@@ -4,33 +4,25 @@
       <div class="item-status">
         <span class="status-number">{{data.preparedValue}}</span>
         <div ontouchstart="">
-          <div class="button">
-            <a href="#">待派送</a>
-          </div>
+          <button class="button-56" role="button">待派送</button>
         </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.deliveringValue}}</span>
         <div ontouchstart="">
-          <div class="button">
-            <a href="#">派送中</a>
-          </div>
+          <button class="button-56" role="button">派送中</button>
         </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.accomplishValue}}</span>
         <div ontouchstart="">
-          <div class="button">
-            <a href="#">已完成</a>
-          </div>
+          <button class="button-56" role="button">已完成</button>
         </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.preparedValue+data.deliveringValue+data.accomplishValue}}</span>
         <div ontouchstart="">
-          <div class="button">
-            <a href="#">全部订单</a>
-          </div>
+          <button class="button-56" role="button">全部订单</button>
         </div>
       </div>
 
