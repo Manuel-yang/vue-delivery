@@ -12,9 +12,12 @@
 import OrderPage from '../components/OrderPage.vue'
 import axios from 'axios'
 
-// const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
-const requests = axios.create({ baseURL:'http://localhost:8081'})
+const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
+// const requests = axios.create({ baseURL:'http://localhost:8081'})
 export default {
+  mounted() {
+    this.checkSession();
+  },
   data() {
     return {
       form: '',
@@ -39,6 +42,14 @@ export default {
           // this.$router.push({path:'/PayPage'})
         }
       })
+    },
+    checkSession() {
+      if(!this.$session.exists()) {
+        this.$router.push('/') 
+        this.$router.push({name:''}) 
+        this.$router.push({path:'/'})
+        return;
+      }
     }
   },
 }

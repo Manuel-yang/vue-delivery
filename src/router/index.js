@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import Router from 'vue-router'
 import Dashboard from '@/views/Dashboard'
 import OrderPage from '@/views/OrderPage'
 import LoginPage from '@/views/LoginPage'
 import ReturnPage from '@/views/ReturnPage'
+import Router from 'vue-router'
 
 
 Vue.use(Router)

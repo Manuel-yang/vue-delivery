@@ -17,7 +17,7 @@
 										<div class="section text-center">
 											<h4 class="mb-4 pb-3">登录</h4>
 											<div class="form-group">
-												<input v-model="userPhone" type="text" name="logemail" class="form-style" placeholder="手机号" id="logemail" autocomplete="off">
+												<input v-model="userPhone" type="userPhone" name="logephone" class="form-style" placeholder="手机号" id="logephone" autocomplete="off">
 												<i class="input-icon uil uil-mobile-android"></i>
 											</div>	
 											<div class="form-group mt-2">
@@ -34,11 +34,11 @@
 										<div class="section text-center">
 											<h4 class="mb-4 pb-3">注册</h4>
 											<div class="form-group">
-												<input v-model="newPhone" type="text" class="form-style" placeholder="手机号" id="logname" autocomplete="off">
+												<input v-model="newPhone" class="form-style" placeholder="手机号" id="logname" autocomplete="off">
 												<i class="input-icon uil uil-mobile-android"></i>
 											</div>	
 											<div class="form-group mt-2">
-												<input v-model="newStdId" name="logemail" class="form-style" placeholder="学生证号" id="logemail" autocomplete="off">
+												<input v-model="newStdId" class="form-style" placeholder="学生证号" id="logemail" autocomplete="off">
 												<i class="input-icon uil uil-credit-card"></i>
 											</div>	
 											<div class="form-group mt-2">
@@ -62,8 +62,8 @@
 <script>
 import axios from 'axios'
 import { Toast } from 'vant'
-// const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
-const requests = axios.create({ baseURL:'http://localhost:8081'})
+const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
+// const requests = axios.create({ baseURL:'http://localhost:8081'})
 export default {
   data() {
     return {
@@ -97,8 +97,9 @@ export default {
           return;
         }
         if (res.status === 200) {
-          this.$session.set("studentId", res.data.object.studentId);
+          // this.$session.set("studentId", res.data.object.studentId);
           this.$session.set("userPhone", this.userPhone);
+          this.$session.set("password", this.userPwd)
           this.$router.push('/OrderPage')
         }
       }, (error) => {

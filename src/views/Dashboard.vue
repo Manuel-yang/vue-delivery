@@ -29,8 +29,8 @@ import SearchBlock from '../components/SearchBlock.vue'
 import Bottom from '../components/Bottom.vue'
 import axios from 'axios'
 
-// const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
-const requests = axios.create({ baseURL:'http://localhost:8081'})
+const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
+// const requests = axios.create({ baseURL:'http://localhost:8081'})
 
 export default {
   data() {
@@ -53,6 +53,7 @@ export default {
     SearchBlock,
   },
   mounted() {
+    this.checkSession();
     this.fetchData()
     this.getSession()
   },
@@ -82,16 +83,20 @@ export default {
       if(!this.$session.exists()) {
         return;
       }
-      else {
-        console.log(this.$session.getAll())
-      }
     },
     DeleteOrder(orderId) {
       console.log(orderId);
       requests.delete(`api/order/${orderId}`).then((res) => {
         this.fetchData();
-        console.log(res)
       })
+    },
+    checkSession() {
+      if(!this.$session.exists()) {
+        this.$router.push('/') 
+        this.$router.push({name:''}) 
+        this.$router.push({path:'/'})
+        return;
+      }
     }
   },
 }

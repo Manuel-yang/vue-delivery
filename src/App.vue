@@ -6,7 +6,21 @@
 
 <script>
 export default {
-  name: 'App'
+  // mounted() {
+  //   this.checkSession();
+  // },
+  name: 'App',
+  methods: {
+    // checkSession() {
+    //   console.log(this.$session.getAll())
+    //   if(!this.$session.exists()) {
+    //     this.$router.push('/') 
+    //     this.$router.push({name:''}) 
+    //     this.$router.push({path:'/'})
+    //     return;
+    //   }
+    // }
+  }
 }
 </script>
 
