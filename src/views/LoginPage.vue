@@ -1,7 +1,7 @@
 <template>
 <div class="body">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'><link rel="stylesheet" href="./style.css">
+  <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'><link rel="stylesheet">
 	<div class="section">
 		<div class="container">
 			<div class="row full-height justify-content-center">
@@ -17,7 +17,7 @@
 										<div class="section text-center">
 											<h4 class="mb-4 pb-3">登录</h4>
 											<div class="form-group">
-												<input v-model="userPhone" type="userPhone" name="logephone" class="form-style" placeholder="手机号" id="logephone" autocomplete="off">
+												<input v-model="userPhone" type="name" name="logephone" class="form-style" placeholder="手机号" id="logephone" autocomplete="off">
 												<i class="input-icon uil uil-mobile-android"></i>
 											</div>	
 											<div class="form-group mt-2">
@@ -85,9 +85,7 @@ export default {
       this.userInfo.mobile = this.userPhone;
       this.userInfo.password = this.userPwd;
       let data = this.userInfo
-      console.log(data)
       await requests.post('/api/user/login', data).then((res) => {
-        console.log(res)
         if (res.data.status === 444) {
           Toast('该用户不存在');
           return;
@@ -124,9 +122,7 @@ export default {
       this.newInfo.studentId = this.newStdId;
       this.newInfo.password = this.newPwd
       let data = this.newInfo
-      console.log(data)
       await requests.post('/api/user/register', data).then((res) => {
-        console.log(res)
         if (res.data.status === 444) {
           Toast('注册失败，请稍后再试');
           return;

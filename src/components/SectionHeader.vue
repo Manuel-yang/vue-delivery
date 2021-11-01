@@ -28,7 +28,6 @@ export default {
             const newmonth = date.month>=10?date.month:'0'+date.month
             const day = date.date>10?date.date:'0'+date.date
             this.updateTime = date.year + '.' + newmonth + '.' + day
-            console.log(this.updateTime)
     
     },
   },

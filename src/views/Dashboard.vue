@@ -62,7 +62,6 @@ export default {
     fetchData() {
       requests.get(`api/order/findByUserId/${this.$session.get("studentId")}`).then( res => {
         this.data =res.data.object;
-        console.log(res.data.object)
         this.statusData();
       })
     },
