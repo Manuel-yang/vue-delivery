@@ -1,8 +1,6 @@
 
 /* CSS */
 .button-56 {
-  padding-left: 4px;
-  padding-right: 4px;
   align-items: center;
   background-color: #fee6e3;
   border: 2px solid #111;
@@ -55,6 +53,6 @@
 
 @media (min-width: 768px) {
   .button-56 {
-    padding: 0 40px;
+
   }
 }
