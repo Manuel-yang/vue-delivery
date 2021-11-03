@@ -8,6 +8,7 @@
       @click-left="onClickLeft"
     />
   </div>
+  <div class="body">
   <van-cell-group inset>
       <van-field v-model="userName" label="收货人" placeholder="注:收货人需与收件人一致" /> 
       <van-field v-model="userPhone" label="手机号"  placeholder="在此输入"/>
@@ -39,13 +40,9 @@
         <van-popup v-model="dateFlag"  position="bottom" :style="{ height: '270px' }">
           <van-datetime-picker v-model="currentTime" type="time" :filter="filter" @confirm="dateConfirm"/>
         </van-popup>
+      <van-submit-bar :price="300" button-text="提交订单" @submit="submit" />
   </van-cell-group>
-  <van-empty >
-    <router-link to="/Dashboard">
-      <van-button round type="primary" class="bottom-button">我的首页</van-button>
-    </router-link>
-    <van-button round type="primary" class="bottom-button" @click="submit">确认</van-button>
-  </van-empty>
+  </div>
 </div>
 </template>
 
@@ -145,8 +142,9 @@ export default {
       this.data.address = this.dormitoryValue;
       this.data.company = this.serveValue;
       this.data.arriveDate = this.currentTime;
+      this.data.price = '3',
       this.data.orderDate =  new Date().toLocaleString();
-      if (this.dataCheck(this.data)) {
+      if (!this.dataCheck(this.data)) {
         Toast('请填写完整的数据');
         return
       }

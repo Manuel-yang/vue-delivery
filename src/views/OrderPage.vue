@@ -28,14 +28,13 @@ export default {
   },
   methods: {
     async submit(data) {
-      console.log(data)
       await requests.post('api/order/createOrder', data).then((res) => {
         if(res.status === 200) {
-          // this.form = res.data.object
-          // let div = document.createElement("divform")
-          // div.innerHTML = this.form
-          // document.body.appendChild(div)
-          // document.forms[0].submit();
+          this.form = res.data.object
+          let div = document.createElement("divform")
+          div.innerHTML = this.form
+          document.body.appendChild(div)
+          document.forms[0].submit();
         
           // this.$router.push('/Dashboard') 
           // this.$router.push({name:'Dashboard'}) 

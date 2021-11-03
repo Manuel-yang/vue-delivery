@@ -7,9 +7,9 @@
 			<div class="row full-height justify-content-center">
 				<div class="col-12 text-center align-self-center py-5">
 					<div class="section pb-5 pt-5 pt-sm-2 text-center">
-						<h6 class="mb-0 pb-3"><span>登录 </span><span>注册</span></h6>
-			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-			          	<label for="reg-log"></label>
+						<h6 class="mb-0 pb-3"><label class="selectText" for="reg-log">登录 </label><label class="selectText" for="reg-log">注册</label></h6>
+            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+            <label for="reg-log"></label>
 						<div class="card-3d-wrap mx-auto">
 							<div class="card-3d-wrapper">
 								<div class="card-front">
@@ -95,10 +95,10 @@ export default {
           return;
         }
         if (res.status === 200) {
-          // this.$session.set("studentId", res.data.object.studentId);
+          this.$session.set("studentId", res.data.object.studentId);
           this.$session.set("userPhone", this.userPhone);
           this.$session.set("password", this.userPwd)
-          this.$router.push('/OrderPage')
+          this.$router.push('/Dashboard')
         }
       }, (error) => {
         if (error.response.status === 400) {
