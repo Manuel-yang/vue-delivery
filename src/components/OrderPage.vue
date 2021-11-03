@@ -40,15 +40,20 @@
         <van-popup v-model="dateFlag"  position="bottom" :style="{ height: '270px' }">
           <van-datetime-picker v-model="currentTime" type="time" :filter="filter" @confirm="dateConfirm"/>
         </van-popup>
-      <van-submit-bar :price="300" button-text="提交订单" @submit="submit" />
   </van-cell-group>
+    <UserAgreement @protocolCheck="protocolCheck"/>
+  <van-submit-bar :price="300" button-text="提交订单" @submit="submit" />
   </div>
 </div>
 </template>
 
 <script>
 import { Toast } from 'vant';
+import UserAgreement from '../components/UserAgreement.vue'
 export default {
+  components: {
+    UserAgreement,
+  },
   data() {
     return {
       userName: '',
@@ -61,6 +66,7 @@ export default {
       dateValue: '请选择',
       currentTime: '12:00',
       expressCode: '',
+      protocolFlag:false,
       columns: [
         {
           text: '文德楼',
@@ -101,7 +107,7 @@ export default {
 
       fileList: [
       ],
-      data: {}
+      data: {},
     };
   },
 
@@ -148,8 +154,13 @@ export default {
         Toast('请填写完整的数据');
         return
       }
+      if(!this.protocolFlag) {
+        Toast('请先同意配送协议');
+        return
+      }
       this.$emit('submit',this.data)
     },
+
     filter(type, options) {
       if (type === 'minute') {
         return options.filter((option) => option % 5 === 0);
@@ -158,17 +169,20 @@ export default {
     },
 
     dataCheck(json) {
-      for (let key in json) {
-        if(json[key] == '') {
-          return false;
+      for (var key in json) {
+        if(json[key] == '' || json[key] == "请选择") {
+          return false
         }
-        return true;
       }
+      return true
     },
     onClickLeft() {
       this.$router.push('/') 
       this.$router.push({name:''}) 
       this.$router.push({path:'/'})
+    },
+    protocolCheck() {
+      this.protocolFlag = !this.protocolFlag
     }
   },
 }
