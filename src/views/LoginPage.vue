@@ -45,6 +45,12 @@
 												<input v-model="newPwd" type="password" name="logpass" class="form-style" placeholder="密码" id="logpass" autocomplete="off">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
+                      
+                      <div class="form-group mt-2">
+												<input v-model="code" type="password" name="logpass" class="form-style" placeholder="验证码" id="logpass" autocomplete="off">                        
+                        <i class="input-icon uil uil-code-branch"></i>
+                        <ValidCode  @validCode="validCode"/>
+											</div>
 											<a @click="signUp" class="btn mt-4">提交</a>
 				      					</div>
 			      					</div>
@@ -62,9 +68,13 @@
 <script>
 import axios from 'axios'
 import { Toast } from 'vant'
+import ValidCode from '../components/ValidCode'
 const requests = axios.create({ baseURL:'http://110.42.145.177:8081'})
 // const requests = axios.create({ baseURL:'http://localhost:8081'})
 export default {
+  components: {
+    ValidCode,
+  },
   data() {
     return {
       userPhone:'',
@@ -73,6 +83,8 @@ export default {
       newPhone:'',
       newStdId:'',
       newPwd:'',
+      code:'',
+      rawCode:'',
       newInfo:{},
     }
   },
@@ -120,7 +132,10 @@ export default {
         Toast('输入的学生号有误');
         return;
       }
-
+      if (this.code != this.rawCode) {
+        Toast('验证码错误');
+        return;
+      }
       this.newInfo.mobile = this.newPhone;
       this.newInfo.studentId = this.newStdId;
       this.newInfo.password = this.newPwd
@@ -140,6 +155,10 @@ export default {
         }
       })
     },
+    validCode(code) {
+      this.rawCode = code;
+    },
+    
 
     isPhoneNumber(tel) {
     if(!(/^1[34578]\d{9}$/.test(tel))){ 
