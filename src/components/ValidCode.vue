@@ -1,5 +1,5 @@
 <template>
-  <canvas id="s-canvas" :width="contentWidth" :height="contentHeight"></canvas>
+  <canvas @click="generateCode()" id="s-canvas" :width="contentWidth" :height="contentHeight"></canvas>
 </template>
 <script>
 export default {
