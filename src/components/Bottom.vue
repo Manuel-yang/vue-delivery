@@ -32,8 +32,8 @@ of Simple CSS Waves-->
 
 <!--Content starts-->
     <div class="content flex">
-      <p>2021 | 南京星坠网络科技</p>
       <p>苏ICP备 2021037534 号-1</p>
+      <p class="company">2021 | 南京星坠网络科技有限公司</p>
     </div>
 <!--Content ends-->
   </div>

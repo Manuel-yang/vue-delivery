@@ -1,12 +1,9 @@
 <template>
-  <div class="app-header-right">
-    <button class="profile-btn">
-      <img v-show="isLogin" src="../assets/user.png" />
-      <!-- <span @click="login">{{!this.$session.exists()?"登录!加入我们吧!":this.$session.get("userName")}}</span>-->
-    </button>
+<div class="head" align="right">
+  <div class="headBox">
     <LogOutBt v-show="isLogin" @click="loginOut"/>
-    <!-- <van-button v-show="isLogin" round type="info" @click="loginOut">退出</van-button> -->
   </div>
+</div>
 </template>
 
 <script>
@@ -23,7 +20,7 @@ export default {
   methods: {
     loginOut() {
       localStorage.clear()
-      this.$router.push(this.$route.query.redirect || '/')
+      this.$router.push(this.$route.query.redirect || '/LoginPage')
     },
     login() {
       if (localStorage.getItem("studentId")==null) {

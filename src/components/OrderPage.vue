@@ -135,7 +135,7 @@ export default {
       console.log("upload success");
     },
     submit() {
-      this.data.studentId = this.$session.get("studentId");
+      this.data.studentId = localStorage.getItem("studentId");
       this.data.targetName = this.userName;
       this.data.phone = this.userPhone;
       this.data.expressCode = this.expressCode;
@@ -166,9 +166,9 @@ export default {
       }
     },
     onClickLeft() {
-      this.$router.push('/Dashboard') 
-      this.$router.push({name:'Dashboard'}) 
-      this.$router.push({path:'/Dashboard'})
+      this.$router.push('/') 
+      this.$router.push({name:''}) 
+      this.$router.push({path:'/'})
     }
   },
 }

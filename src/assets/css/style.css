@@ -868,3 +868,11 @@ button, a {
 .bt-order {
   margin-left: 1rem;
 }
+
+.head {
+  width: 100%;
+}
+
+.headBox {
+  width: 140px;
+}

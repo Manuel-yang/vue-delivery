@@ -1,7 +1,7 @@
 <template>
   <div class="project-boxes jsListView">
     <div v-for="item in data" :key="item.id">
-      <ProjectBox @deleteOrder="deleteOrder" :data="item"/>
+      <ProjectBox @deleteOrder="deleteOrder" :value="item"/>
     </div>
   </div>
 </template>
