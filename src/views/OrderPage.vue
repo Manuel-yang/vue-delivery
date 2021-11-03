@@ -43,10 +43,10 @@ export default {
       })
     },
     checkSession() {
-      if(!this.$session.exists()) {
-        this.$router.push('/') 
-        this.$router.push({name:''}) 
-        this.$router.push({path:'/'})
+      if(localStorage.getItem("studentId")==null) {
+        this.$router.push('/LoginPage') 
+        this.$router.push({name:'LoginPage'}) 
+        this.$router.push({path:'/LoginPage'})
         return;
       }
     }

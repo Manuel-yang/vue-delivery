@@ -2,7 +2,7 @@
   <div class="app-header-right">
     <button class="profile-btn">
       <img v-show="isLogin" src="../assets/user.png" />
-      <span @click="login">{{!this.$session.exists()?"登录!加入我们吧!":this.$session.get("userName")}}</span>
+      <!-- <span @click="login">{{!this.$session.exists()?"登录!加入我们吧!":this.$session.get("userName")}}</span>-->
     </button>
     <LogOutBt v-show="isLogin" @click="loginOut"/>
     <!-- <van-button v-show="isLogin" round type="info" @click="loginOut">退出</van-button> -->
@@ -14,7 +14,7 @@ import LogOutBt from '../components/LogOutBt.vue';
 export default {
   data() {
     return {
-      isLogin:this.$session.exists(),
+      isLogin:localStorage.getItem("studentId")!=null,
     }
   },
   components: {
@@ -22,13 +22,11 @@ export default {
   },
   methods: {
     loginOut() {
-      this.$session.destroy()
-      console.log(this.$session.getAll())
-      console.log(this.$session.exists())
+      localStorage.clear()
       this.$router.push(this.$route.query.redirect || '/')
     },
     login() {
-      if (!this.$session.exists()) {
+      if (localStorage.getItem("studentId")==null) {
          this.$router.push('/LoginPage')
       }
       else {

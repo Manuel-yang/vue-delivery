@@ -95,10 +95,13 @@ export default {
           return;
         }
         if (res.status === 200) {
-          this.$session.set("studentId", res.data.object.studentId);
-          this.$session.set("userPhone", this.userPhone);
-          this.$session.set("password", this.userPwd)
-          this.$router.push('/Dashboard')
+          // this.$session.set("studentId", res.data.object.studentId);
+          // this.$session.set("userPhone", this.userPhone);
+          // this.$session.set("password", this.userPwd);
+          localStorage.setItem("studentId", res.data.object.studentId);
+          localStorage.setItem("userPhone", this.userPhone);
+          // localStorage.setItem("password", this.userPhone)
+          this.$router.push('/')
         }
       }, (error) => {
         if (error.response.status === 400) {
@@ -129,9 +132,11 @@ export default {
         }
         if( res.data.status === 200) {
           Toast('注册成功');
-          this.$session.set("studentId", this.newStdId);
-          this.$session.set("userPhone", this.newPhone);
-          this.$router.push('/OrderPage')
+          // this.$session.set("studentId", this.newStdId);
+          // this.$session.set("userPhone", this.newPhone);
+          localStorage.setItem("studentId", this.newStdId);
+          localStorage.setItem("userPhone", this.newPhone);
+          this.$router.push('/')
         }
       })
     },

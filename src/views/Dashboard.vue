@@ -55,12 +55,11 @@ export default {
   mounted() {
     this.checkSession();
     this.fetchData()
-    this.getSession()
   },
 
   methods: {
     fetchData() {
-      requests.get(`api/order/findByUserId/${this.$session.get("studentId")}`).then( res => {
+      requests.get(`api/order/findByUserId/${localStorage.getItem("studentId")}`).then( res => {
         this.data =res.data.object;
         console.log(this.data)
         this.statusData();
@@ -79,11 +78,6 @@ export default {
       this.data.accomplishValue = this.accomplishValue;
     },
 
-    getSession() {
-      if(!this.$session.exists()) {
-        return;
-      }
-    },
     DeleteOrder(orderId) {
       console.log(orderId);
       requests.delete(`api/order/${orderId}`).then((res) => {
@@ -91,10 +85,10 @@ export default {
       })
     },
     checkSession() {
-      if(!this.$session.exists()) {
-        this.$router.push('/') 
-        this.$router.push({name:''}) 
-        this.$router.push({path:'/'})
+      if(localStorage.getItem("studentId")==null) {
+        this.$router.push('/LoginPage') 
+        this.$router.push({name:'LoginPage'}) 
+        this.$router.push({path:'/LoginPage'})
         return;
       }
     }

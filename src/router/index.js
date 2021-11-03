@@ -17,7 +17,7 @@ Router.prototype.push = function push(location) {
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/LoginPage',
       name: 'LoginPage',
       component: LoginPage
     },
@@ -27,7 +27,7 @@ export default new Router({
       component: OrderPage
     },
     {
-      path: '/Dashboard',
+      path: '/',
       name: 'Dashboard',
       component: Dashboard
     },
