@@ -33,12 +33,41 @@ of Simple CSS Waves-->
 <!--Content starts-->
     <div class="content flex">
       <p>苏ICP备 2021037534 号-1</p>
+      <u @click="showPopup" class="qrcode">意见反馈 • 客服反馈</u>
+      <van-popup
+        v-model="show"
+        closeable
+        position="bottom"
+        :style="{ height: '40%' }"
+      >
+        <img src="../assets/QRCode.jpg"/>
+      </van-popup>
       <p class="company">2021 | 南京星坠网络科技有限公司</p>
     </div>
 <!--Content ends-->
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      show: false,
+    }
+  },
+  methods: {
+    showPopup() {
+      this.show = true;
+    },
+  }
+}
+</script>
+
 <style scoped>
-@import '../assets/css/bottom.css'
+@import '../assets/css/bottom.css';
+
+img{
+  margin-top: 50px;
+  height: 250px;
+}
 </style>

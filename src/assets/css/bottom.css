@@ -104,6 +104,11 @@ p {
 }
 
 .company {
-  font-size: 1px;
+  font-size: 5px;
+  color: #99A799;
+}
+
+.qrcode {
+  font-size: 10px;
   color: #99A799;
 }
