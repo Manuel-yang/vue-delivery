@@ -4,25 +4,25 @@
       <div class="item-status">
         <span class="status-number">{{data.preparedValue}}</span>
         <div ontouchstart="">
-          <button class="button-56" role="button">待派送</button>
+          <button @click="ready" class="button-56" role="button">待派送</button>
         </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.deliveringValue}}</span>
         <div ontouchstart="">
-          <button class="button-56" role="button">派送中</button>
+          <button  @click="delivery" class="button-56" role="button">派送中</button>
         </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.accomplishValue}}</span>
         <div ontouchstart="">
-          <button class="button-56" role="button">已完成</button>
+          <button  @click="accomplish" class="button-56" role="button">已完成</button>
         </div>
       </div>
       <div class="item-status">
         <span class="status-number">{{data.preparedValue+data.deliveringValue+data.accomplishValue}}</span>
         <div ontouchstart="">
-          <button class="button-56" role="button">全部订单</button>
+          <button  @click="all" class="button-56" role="button">全部订单</button>
         </div>
       </div>
 
@@ -43,6 +43,23 @@ export default {
     data: Array
   },
   methods: {
+    ready() {
+      let data = "待派送"
+      this.$emit('filter', data);
+    },
+    delivery() {
+      let data = "派送中"
+      this.$emit('filter', data);
+    },
+    accomplish() {
+      let data = "已完成"
+      this.$emit('filter', data);
+    },
+    all() {
+      let data = "全部订单"
+      this.$emit('filter', data);
+    },
+
   },
   components: {
     Bell,

@@ -69,8 +69,7 @@ export default {
     },
 
     check() {
-      console.log(this.value.orderDate)
-      if (this.value.status == "已下单") {
+      if (this.value.status == "待派送") {
         this.process = "0%"
         this.processBar = "width: 0%;"
         this.color = "background-color: #d5deff;"

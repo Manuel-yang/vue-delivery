@@ -8,7 +8,7 @@
       <div class="app-content">
         <div class="projects-section">
           <SectionHeader />
-          <SectionLine :data="data" />
+          <SectionLine @filter="filter" :data="rawData" />
           <BoxBlock @deleteOrder="DeleteOrder" :data="data"/>
         </div>
       </div>
@@ -36,6 +36,7 @@ export default {
   data() {
     return {
       data:[],
+      rawData:[],
       preparedValue:0,
       deliveringValue:0,
       accomplishValue:0,
@@ -61,25 +62,24 @@ export default {
     fetchData() {
       requests.get(`api/order/findByUserId/${localStorage.getItem("studentId")}`).then( res => {
         this.data =res.data.object;
-        console.log(this.data)
+        this.rawData = this.data;
         this.statusData();
       })
     },
 
     statusData() {
-      for(let i = 0; i < this.data.length; i++)
+      for(let i = 0; i < this.rawData.length; i++)
       {
-        if (this.data[i].status == "已下单") this.preparedValue++;
-        if (this.data[i].status == "派送中") this.deliveringValue++;
-        if (this.data[i].status == "已完成") this.accomplishValue++;
+        if (this.rawData[i].status == "待派送") this.preparedValue++;
+        if (this.rawData[i].status == "派送中") this.deliveringValue++;
+        if (this.rawData[i].status == "已完成") this.accomplishValue++;
       }
-      this.data.preparedValue = this.preparedValue;
-      this.data.deliveringValue = this.deliveringValue;
-      this.data.accomplishValue = this.accomplishValue;
+      this.rawData.preparedValue = this.preparedValue;
+      this.rawData.deliveringValue = this.deliveringValue;
+      this.rawData.accomplishValue = this.accomplishValue;
     },
 
     DeleteOrder(orderId) {
-      console.log(orderId);
       requests.delete(`api/order/${orderId}`).then((res) => {
         this.fetchData();
       })
@@ -91,6 +91,29 @@ export default {
         this.$router.push({path:'/LoginPage'})
         return;
       }
+    },
+    filter(flag) {
+      this.data = [];
+      let j = 0;
+      if(flag == "待派送") {
+        for(let i = 0; i < this.rawData.length;i++) {
+          if (this.rawData[i].status == "待派送") this.data[j++] = this.rawData[i];
+        } 
+      }
+      if(flag == "派送中") {
+        for(let i = 0; i < this.rawData.length;i++) {
+          if (this.rawData[i].status == "派送中") this.data[j++] = this.rawData[i];
+        } 
+      }
+      if(flag == "已完成") {
+        for(let i = 0; i < this.rawData.length;i++) {
+          if (this.rawData[i].status == "已完成") this.data[j++] = this.rawData[i];
+        } 
+      }
+      if(flag == "全部订单") {
+        this.data = this.rawData;
+      }
+
     }
   },
 }
