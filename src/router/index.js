@@ -3,6 +3,7 @@ import Dashboard from '@/views/Dashboard'
 import OrderPage from '@/views/OrderPage'
 import LoginPage from '@/views/LoginPage'
 import ReturnPage from '@/views/ReturnPage'
+import CreditPage from '@/views/CreditPage'
 import Router from 'vue-router'
 
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/ReturnPage',
       name: 'ReturnPage',
       component: ReturnPage
+    },
+    {
+      path: '/CreditPage',
+      name: 'CreditPage',
+      component: CreditPage
     },
   ]
 })

@@ -779,6 +779,7 @@ button, a {
   }
 
   .app-header {
+    background-color: white;
     padding: 16px 10px;
   }
 
@@ -875,4 +876,5 @@ button, a {
 
 .headBox {
   width: 140px;
+  float: right;
 }

@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     async submit(data) {
-      await requests.post('api/order/createOrder', data).then((res) => {
+      await requests.post(`api/order/createOrder//${localStorage.getItem("token")}`, data).then((res) => {
         if(res.status === 200) {
           this.form = res.data.object
           let div = document.createElement("divform")

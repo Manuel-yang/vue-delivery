@@ -148,7 +148,7 @@ export default {
       this.data.address = this.dormitoryValue;
       this.data.company = this.serveValue;
       this.data.arriveDate = this.currentTime;
-      this.data.price = '3',
+      this.data.price = '0.01',
       this.data.orderDate =  new Date().toLocaleString();
       if (!this.dataCheck(this.data)) {
         Toast('请填写完整的数据');

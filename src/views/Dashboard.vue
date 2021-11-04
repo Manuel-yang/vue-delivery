@@ -2,7 +2,7 @@
 <div>
   <div class="app-container">
       <div class="app-header">
-        <UserBlock/>
+        <UserBlock :studentId="studentId" :credit="credit"/>
       </div>
 
       <div class="app-content">
@@ -40,6 +40,8 @@ export default {
       preparedValue:0,
       deliveringValue:0,
       accomplishValue:0,
+      credit:'',
+      studentId:'',
     }
   },
   components: {
@@ -55,12 +57,13 @@ export default {
   },
   mounted() {
     this.checkSession();
-    this.fetchData()
+    this.fetchData();
+    this.getCredit();
   },
 
   methods: {
     fetchData() {
-      requests.get(`api/order/findByUserId/${localStorage.getItem("studentId")}`).then( res => {
+      requests.get(`api/order/findByUserId/${localStorage.getItem("studentId")}/${localStorage.getItem("token")}`).then( res => {
         this.data =res.data.object;
         this.rawData = this.data;
         this.statusData();
@@ -80,7 +83,7 @@ export default {
     },
 
     DeleteOrder(orderId) {
-      requests.delete(`api/order/${orderId}`).then((res) => {
+      requests.delete(`api/order/${orderId}/${localStorage.getItem("token")}`).then((res) => {
         this.fetchData();
       })
     },
@@ -113,7 +116,12 @@ export default {
       if(flag == "全部订单") {
         this.data = this.rawData;
       }
-
+    },
+    getCredit() {
+      requests.get(`api/user/getPoint/${localStorage.getItem("studentId")}/${localStorage.getItem("token")}`).then( res => {
+        this.credit = res.data.object;
+        this.studentId = localStorage.getItem("studentId")
+      })
     }
   },
 }

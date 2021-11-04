@@ -112,6 +112,7 @@ export default {
           // this.$session.set("password", this.userPwd);
           localStorage.setItem("studentId", res.data.object.studentId);
           localStorage.setItem("userPhone", this.userPhone);
+          localStorage.setItem("token", res.data.object.token)
           // localStorage.setItem("password", this.userPhone)
           this.$router.push('/')
         }
@@ -151,6 +152,7 @@ export default {
           // this.$session.set("userPhone", this.newPhone);
           localStorage.setItem("studentId", this.newStdId);
           localStorage.setItem("userPhone", this.newPhone);
+          localStorage.setItem("token", res.data.object.token)
           this.$router.push('/')
         }
       })
