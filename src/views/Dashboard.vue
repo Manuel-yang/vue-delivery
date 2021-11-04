@@ -40,7 +40,7 @@ export default {
       preparedValue:0,
       deliveringValue:0,
       accomplishValue:0,
-      credit:'',
+      credit:0,
       studentId:'',
     }
   },
@@ -58,7 +58,7 @@ export default {
   mounted() {
     this.checkSession();
     this.fetchData();
-    this.getCredit();
+
   },
 
   methods: {
@@ -66,6 +66,7 @@ export default {
       requests.get(`api/order/findByUserId/${localStorage.getItem("studentId")}/${localStorage.getItem("token")}`).then( res => {
         this.data =res.data.object;
         this.rawData = this.data;
+        this.studentId = localStorage.getItem("studentId")
         this.statusData();
       })
     },
@@ -117,12 +118,6 @@ export default {
         this.data = this.rawData;
       }
     },
-    getCredit() {
-      requests.get(`api/user/getPoint/${localStorage.getItem("studentId")}/${localStorage.getItem("token")}`).then( res => {
-        this.credit = res.data.object;
-        this.studentId = localStorage.getItem("studentId")
-      })
-    }
   },
 }
 </script>
